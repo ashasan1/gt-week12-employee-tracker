@@ -1,22 +1,68 @@
 const inquirer = require('inquirer');
 
-// inquirer.prompt([
-//     {
-//         type: 'input',
-//         name: 'test',
-//         message: 'Type in a test code'
-//     }
-// ]).then( function(response) {
-//     console.log(response.test);
-// })
-
 inquirer.prompt([
     {
         type: 'list',
         name:'mainMenu',
         message:'What would you like to do?',
-        choices: ['View All Employees','View all Employees by Department','View All Roles', 'Add Employee', 'Remove Employee','Update Employee Role','Add Deparment', 'Add Role']
+        choices: ['View All Employees','View all Employees by Department','View All Employees by Role', 'Add Employee','Update Employee Role','Add Department', 'Add Role']
     }
 ]).then( function(response) {
     console.log("Choice accepted");
+    switch (response.mainMenu) {
+        case "View All Employees":
+            viewAllEmployees()
+            break;
+    
+        case 'View all Employees by Department':
+            viewAllEmployByDept()
+            break;
+        case 'View All Employees by Role':
+            viewAllEmployeesByRole()
+            break;
+        case 'Add Employee':
+            addEmployee()
+            break;
+        case'Update Employee Role': 
+            updateEmployeeRole()
+            break;
+        case 'Add Department':
+            addDepartment()
+            break;
+        case 'Add Role':
+            addRole()
+            break;
+        
+
+    }
+
+
 })
+
+function viewAllEmployees() {
+    console.log('View all Employees')
+}
+
+function viewAllEmployByDept() {
+    console.log('View all Employees by Department')
+}
+
+function viewAllEmployeesByRole() {
+    console.log('View all employees by role')
+}
+
+function addEmployee() {
+    console.log('Add Employee')
+}
+
+function updateEmployeeRole() {
+    console.log('Update Employee Role')
+}
+
+function addDepartment() {
+    console.log('Add Department')
+}
+
+function addRole(){
+    console.log('Add Role')
+}
