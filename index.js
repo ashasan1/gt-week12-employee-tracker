@@ -1,6 +1,25 @@
 const inquirer = require('inquirer');
+const mysql = require("mysql");
 
-inquirer.prompt([
+const connectionInfo = {
+    host:'localhost',
+    port:3306,
+    user: "root",
+    password: 'kenwe88!',
+    database: "employee_DB"
+}
+
+const connection = mysql.createConnection(connectionInfo);
+
+connection.connect( function(err) {
+    if (err) throw err;
+    console.log('Connection Sucessful! Begin Employee Tracker.');
+    main();
+
+})
+
+function main() {
+    inquirer.prompt([
     {
         type: 'list',
         name:'mainMenu',
@@ -38,6 +57,8 @@ inquirer.prompt([
 
 
 })
+}
+
 
 function viewAllEmployees() {
     console.log('View all Employees')
