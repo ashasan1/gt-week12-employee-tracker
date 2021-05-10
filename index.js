@@ -61,7 +61,14 @@ function main() {
 
 
 function viewAllEmployees() {
-    console.log('View all Employees')
+    console.log('View all Employees');
+    connection.query("SELECT employee.id, employee.first_name, employee.last_name, employee.manager_id, role.title, role.salary, department.name FROM ((employee INNER JOIN role ON employee.role_id = role.id) INNER JOIN department ON role.department_id = department.id)", function (err, result) {
+        if (err) throw err;
+
+        console.table(result);
+        start();
+    });
+
 }
 
 function viewAllEmployByDept() {

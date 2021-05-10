@@ -3,7 +3,7 @@ USE employee_DB;
 INSERT INTO department (department)
 VALUES ('Management'), ('Customer Service'), ('Advising'), ('Marketing');
 
-INSERT INTO roles (title, salary, department_id)
+INSERT INTO role (title, salary, department_id)
 VALUES 
     ('Retail Manager', 90000, 1),
     ('Marketing Manager', 45000, 1),
