@@ -9,10 +9,10 @@ VALUES
     ('Marketing Manager', 45000, 1),
     ('Medical Manager', 70000, 1),
     ('Retail Stock Worker', 50000, 2),
-    ('Retail Cashier', 70000, 3),
-    ('Retail Store Associate', 50000, 3),
+    ('Retail Cashier', 70000, 2),
+    ('Retail Store Associate', 50000, 2),
     ('Marketing Assistant', 75000, 4),
-    ('Assistant Nurse', 45000, 4);
+    ('Assistant Nurse', 45000, 3);
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES
