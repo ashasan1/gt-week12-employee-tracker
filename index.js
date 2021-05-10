@@ -66,31 +66,64 @@ function viewAllEmployees() {
         if (err) throw err;
 
         console.table(result);
-        start();
+        main();
     });
 
 }
 
 function viewAllEmployByDept() {
-    console.log('View all Employees by Department')
+    console.log('View all Employees by Department');
+    main();
+   
 }
 
 function viewAllEmployeesByRole() {
     console.log('View all employees by role')
+    inquirer
+        .prompt({
+            name: "role",
+            type: "list",
+            message: "Which role would you like to see employees for?",
+            choices:
+                [
+                    "Retail Manager",
+                    "Retail Stock Worker",
+                    "Retail Store Associate",
+                    "Retail Cashier",
+                    "Marketing Manager",
+                    "Marketing Assistant",
+                    "Medical Manager",
+                    "Assistant Nurse"
+                ]
+        })
+        .then(function (response) {
+            if (response.role === "Retail Manager" || "Retail Stock Worker" || "Retail Store Associate" || "Retail Cashier" || "Marketing Manager" || "Marketing Assistant" || "Medical Manager" || "Assistant Nurse") {
+                connection.query("SELECT employee.id, employee.first_name, employee.last_name, employee.manager_id, role.title, role.salary, department.name FROM ((employee INNER JOIN role ON employee.role_id = role.id) INNER JOIN department ON role.department_id = department.id) WHERE title = ?", [response.role], function (err, result) {
+                    if (err) throw err;
+
+                    console.table(result);
+                    main();
+                });
+            }
+        });
 }
 
 function addEmployee() {
-    console.log('Add Employee')
+    console.log('Add Employee');
+    main();
 }
 
 function updateEmployeeRole() {
-    console.log('Update Employee Role')
+    console.log('Update Employee Role');
+    main();
 }
 
 function addDepartment() {
-    console.log('Add Department')
+    console.log('Add Department');
+    main();
 }
 
 function addRole(){
-    console.log('Add Role')
+    console.log('Add Role');
+    main();
 }
